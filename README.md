@@ -1,16 +1,6 @@
-# stage_up
+# STAGE UP
 
-A new Flutter project.
+### Une application mobile pour faciliter la recherche de stage et accelerer le processus de recruitement des Etudiants
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://github.com/KronosCodeur/stage_up/assets/100278019/89a8fad7-52c4-42c8-8afd-81e8a49322ca
