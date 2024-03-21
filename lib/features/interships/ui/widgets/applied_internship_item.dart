@@ -11,9 +11,11 @@ class AppliedInternshipItem extends StatelessWidget {
       required this.internship,
       required this.status,
       required this.sent});
+
   final InternshipModel internship;
   final bool status;
   final bool sent;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

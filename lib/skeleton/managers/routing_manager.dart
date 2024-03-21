@@ -32,6 +32,7 @@ class RoutingManager extends ChangeNotifier {
     }
   ];
   int currentPage = 0;
+
   setCurrentPage(int index) {
     currentPage = index;
     notifyListeners();

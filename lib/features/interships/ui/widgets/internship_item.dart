@@ -6,7 +6,9 @@ import 'package:stage_up/res/assets_res.dart';
 
 class InternshipItem extends StatelessWidget {
   const InternshipItem({super.key, required this.internship});
+
   final InternshipModel internship;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 class OnboardingWidget extends StatelessWidget {
   const OnboardingWidget(
       {super.key, required this.image, required this.description});
+
   final String image;
   final String description;
 

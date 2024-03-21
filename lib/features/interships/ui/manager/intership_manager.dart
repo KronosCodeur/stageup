@@ -23,6 +23,7 @@ class InternshipManager extends ChangeNotifier {
       ),
     ),
   ];
+
   setSearchText(String value) {
     searchText = value;
     notifyListeners();
