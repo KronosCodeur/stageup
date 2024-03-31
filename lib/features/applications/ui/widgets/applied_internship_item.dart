@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:stage_up/config/theme/theme.dart';
-import 'package:stage_up/features/interships/data/models/intership_model.dart';
-import 'package:stage_up/res/assets_res.dart';
-import 'package:stage_up/skeleton/widgets/primary_button.dart';
+import 'package:stageup/config/theme/theme.dart';
+import 'package:stageup/core/helpers/date_helper.dart';
+import 'package:stageup/features/applications/domain/entities/application.dart';
+import 'package:stageup/features/interships/domain/entities/intership.dart';
+import 'package:stageup/res/assets_res.dart';
+import 'package:stageup/skeleton/widgets/primary_button.dart';
 
 class AppliedInternshipItem extends StatelessWidget {
   const AppliedInternshipItem(
-      {super.key,
-      required this.internship,
-      required this.status,
-      required this.sent});
+      {super.key, required this.internship, required this.application});
 
-  final InternshipModel internship;
-  final bool status;
-  final bool sent;
+  final Internship internship;
+  final Application application;
+
+  Color getStatusColor(String status) {
+    switch (status) {
+      case "Envoyer":
+        return AppTheme.secondary;
+      case "Accepter":
+        return AppTheme.primary;
+      case "Rejeter":
+        return AppTheme.error;
+      default:
+        return AppTheme.secondary;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +120,7 @@ class AppliedInternshipItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Row(
+                    Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
@@ -119,7 +130,11 @@ class AppliedInternshipItem extends StatelessWidget {
                         ),
                         Gap(5),
                         Text(
-                          'il y a 4 jours',
+                          DateTimeHelper.getStringDuration(
+                            DateTime.parse(
+                              application.appliedAt,
+                            ),
+                          ),
                           style: TextStyle(
                             fontSize: 12,
                             color: AppTheme.gray,
@@ -130,29 +145,21 @@ class AppliedInternshipItem extends StatelessWidget {
                     ),
                     const Gap(20),
                     PrimaryButton(
-                      onPressed: () {},
                       elevation: 0,
-                      hPadding: 20,
+                      onPressed: () {},
+                      hPadding: 15,
                       vPadding: 10,
-                      color: (status && sent)
-                          ? AppTheme.primary.withOpacity(0.1)
-                          : (!sent && !status)
-                              ? AppTheme.error.withOpacity(0.1)
-                              : AppTheme.warning.withOpacity(0.1),
+                      color:
+                          getStatusColor(application.status).withOpacity(0.1),
                       child: Text(
-                        (status && sent)
-                            ? "Accepter"
-                            : (!sent && !status)
-                                ? "Rejeter"
-                                : "En cours",
+                        application.status,
                         style: TextStyle(
-                            color: (status && sent)
-                                ? AppTheme.primary
-                                : (!sent && !status)
-                                    ? AppTheme.error
-                                    : AppTheme.warning,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12),
+                          color: getStatusColor(
+                            application.status,
+                          ),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                   ],
