@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stage_up/features/interships/ui/pages/account_page.dart';
-import 'package:stage_up/features/interships/ui/pages/applied_page.dart';
-import 'package:stage_up/features/interships/ui/pages/home_page.dart';
-import 'package:stage_up/features/interships/ui/pages/notifications_page.dart';
+import 'package:stageup/features/applications/ui/pages/applied_page.dart';
+import 'package:stageup/features/interships/ui/pages/home_page.dart';
+import 'package:stageup/features/interships/ui/pages/notifications_page.dart';
+import 'package:stageup/features/user/ui/pages/account_page.dart';
 
 class RoutingManager extends ChangeNotifier {
   final List<Map<String, dynamic>> pages = [
