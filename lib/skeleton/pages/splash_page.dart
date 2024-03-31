@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:stage_up/config/routing/app_routes.dart';
-import 'package:stage_up/config/theme/theme.dart';
-import 'package:stage_up/core/helpers/shared_prefs_helper.dart';
-import 'package:stage_up/features/applications/ui/manager/application_manager.dart';
-import 'package:stage_up/features/interships/ui/manager/intership_manager.dart';
-import 'package:stage_up/features/security/domain/entities/user.dart';
-import 'package:stage_up/features/security/ui/manager/security_manager.dart';
-import 'package:stage_up/skeleton/widgets/loading.dart';
+import 'package:stageup/config/routing/app_routes.dart';
+import 'package:stageup/config/theme/theme.dart';
+import 'package:stageup/core/helpers/shared_prefs_helper.dart';
+import 'package:stageup/features/applications/ui/manager/application_manager.dart';
+import 'package:stageup/features/interships/ui/manager/intership_manager.dart';
+import 'package:stageup/features/security/domain/entities/user.dart';
+import 'package:stageup/features/security/ui/manager/security_manager.dart';
+import 'package:stageup/skeleton/widgets/loading.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
