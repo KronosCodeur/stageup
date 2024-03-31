@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stage_up/res/assets_res.dart';
+import 'package:stageup/res/assets_res.dart';
 
 class OnBoardingManager extends ChangeNotifier {
   final List<Map<String, String>> screensInfos = [
