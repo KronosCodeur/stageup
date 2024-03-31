@@ -4,11 +4,12 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 class AssetsRes {
-  static const String PLUGIN_NAME = 'stage_up';
+  static const String PLUGIN_NAME = 'stageup';
   static const String PLUGIN_VERSION = '1.0.0+1';
   static const String ENTREPRISE = 'assets/entreprise.jpg';
   static const String IMAGE_INCREASE = 'assets/image_increase.png';
   static const String IMAGE_RECRUITMENT = 'assets/image_recruitment.png';
   static const String IMAGE_SEARCH = 'assets/image_search.png';
   static const String LOADING = 'assets/loading.json';
+  static const String LOGO = 'assets/logo.jpg';
 }
