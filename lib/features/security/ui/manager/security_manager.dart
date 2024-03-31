@@ -2,16 +2,16 @@ import 'dart:io';
 
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:flutter/material.dart';
-import 'package:stage_up/core/connection/network_info.dart';
-import 'package:stage_up/core/errors/failure.dart';
-import 'package:stage_up/core/params/params.dart';
-import 'package:stage_up/core/validators/textfield_validator.dart';
-import 'package:stage_up/features/security/data/services/security_service.dart';
-import 'package:stage_up/features/security/data/sources/remote/user_security_remote_source.dart';
-import 'package:stage_up/features/security/domain/entities/user.dart';
-import 'package:stage_up/features/security/domain/usecases/login.dart';
-import 'package:stage_up/features/security/domain/usecases/register.dart';
-import 'package:stage_up/skeleton/Dto/request_response.dart';
+import 'package:stageup/core/connection/network_info.dart';
+import 'package:stageup/core/errors/failure.dart';
+import 'package:stageup/core/params/params.dart';
+import 'package:stageup/core/validators/textfield_validator.dart';
+import 'package:stageup/features/security/data/services/security_service.dart';
+import 'package:stageup/features/security/data/sources/remote/user_security_remote_source.dart';
+import 'package:stageup/features/security/domain/entities/user.dart';
+import 'package:stageup/features/security/domain/usecases/login.dart';
+import 'package:stageup/features/security/domain/usecases/register.dart';
+import 'package:stageup/skeleton/Dto/request_response.dart';
 
 class SecurityManager extends ChangeNotifier {
   ParamsLogin paramsLogin = ParamsLogin(phone: "", password: "");
