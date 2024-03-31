@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LocalStorageHelper {
   static Future<String?> getStringData(String key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
     return prefs.getString(key);
   }
 
@@ -21,29 +20,28 @@ class LocalStorageHelper {
   static Future<bool> addStringData(String key, String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    return prefs.setString(key, value);
+    return await prefs.setString(key, value);
   }
 
   static Future<bool> addIntData(String key, int value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    return prefs.setInt(key, value);
+    return await prefs.setInt(key, value);
   }
 
-  static Future<bool?> addBoolData(String key, value) async {
+  static Future<bool> addBoolData(String key, value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    return prefs.setBool(key, value);
+    return await prefs.setBool(key, value);
   }
 
-  static Future<bool?> removeData(String key) async {
+  static Future<bool> removeData(String key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.remove(key);
+    return await prefs.remove(key);
   }
 
   static Future<bool> addStringListData(String key, value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setStringList(key, value);
+    return await prefs.setStringList(key, value);
   }
 
   static Future<List<String>?> getStringListData(String key) async {
