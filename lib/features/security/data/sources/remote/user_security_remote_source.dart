@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
-import 'package:stage_up/core/constants/api_constants.dart';
-import 'package:stage_up/core/helpers/shared_prefs_helper.dart';
-import 'package:stage_up/core/params/params.dart';
-import 'package:stage_up/features/security/data/models/user_model.dart';
-import 'package:stage_up/skeleton/Dto/request_response.dart';
+import 'package:stageup/core/constants/api_constants.dart';
+import 'package:stageup/core/helpers/shared_prefs_helper.dart';
+import 'package:stageup/core/params/params.dart';
+import 'package:stageup/features/security/data/models/user_model.dart';
+import 'package:stageup/skeleton/Dto/request_response.dart';
 
 class UserSecurityRemoteSource {
   Future<RequestResponse> register(ParamsRegister paramsRegister) async {
