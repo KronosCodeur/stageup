@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stage_up/features/security/ui/manager/security_manager.dart';
+import 'package:stageup/features/security/ui/manager/security_manager.dart';
 
 class NumberVerificationPage extends StatelessWidget {
   const NumberVerificationPage({super.key});
