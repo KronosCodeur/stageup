@@ -1,5 +1,5 @@
-import 'package:stage_up/core/constants/months.dart';
-import 'package:stage_up/core/constants/weeksdays.dart';
+import 'package:stageup/core/constants/months.dart';
+import 'package:stageup/core/constants/weeksdays.dart';
 
 class DateTimeHelper {
   static String getStringDate(DateTime date) {
@@ -12,5 +12,17 @@ class DateTimeHelper {
 
   static String getStringDateTime(DateTime date) {
     return "${getStringDate(date)} ${getStringTime(date)}";
+  }
+
+  static String getStringDuration(DateTime date) {
+    var days = DateTime.now().day - date.day;
+    switch (days) {
+      case 0:
+        return "Aujourd'hui";
+      case 1:
+        return "il y a $days jour";
+      default:
+        return "il y a $days jours";
+    }
   }
 }
