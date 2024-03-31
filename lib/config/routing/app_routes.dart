@@ -7,5 +7,6 @@ class AppRoutes {
   static const String homeRoute = 'Home';
   static const String rootRoute = 'Root';
   static const String profileRoute = 'Profile';
-  static const String internshipInfo = 'InternshipInfo';
+  static const String internshipInfoRoute = 'InternshipInfo';
+  static const String notificationRoute = 'Notifications';
 }
