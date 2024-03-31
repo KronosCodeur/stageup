@@ -1,5 +1,5 @@
-name: stage_up
-description: "A new Flutter project."
+name: stageup
+description: "Une application qui  a pour but de faciliter la recherche de stage par les etudiants, le processus de recretement et le suivi  de la demande de stage"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -43,11 +43,12 @@ dependencies:
   gap: ^3.0.1
   google_fonts: ^6.2.0
   data_connection_checker_tv: ^0.3.5-nullsafety
-  flutter_launcher_icons: ^0.13.1
   dartz: ^0.10.1
   lottie: ^3.1.0
+  image_picker: ^1.0.7
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
 
@@ -57,6 +58,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo.jpg"
+  min_sdk_android: 21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -105,3 +112,5 @@ flutter:
     - assets/image_recruitment.png
     - assets/image_search.png
     - assets/loading.json
+    - assets/logo.jpg
+
