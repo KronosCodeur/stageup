@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:stage_up/config/routing/app_routes.dart';
-import 'package:stage_up/config/theme/theme.dart';
-import 'package:stage_up/features/security/ui/manager/security_manager.dart';
-import 'package:stage_up/skeleton/widgets/decoration.dart';
-import 'package:stage_up/skeleton/widgets/loading.dart';
-import 'package:stage_up/skeleton/widgets/primary_button.dart';
+import 'package:stageup/config/routing/app_routes.dart';
+import 'package:stageup/config/theme/theme.dart';
+import 'package:stageup/features/interships/ui/manager/intership_manager.dart';
+import 'package:stageup/features/security/ui/manager/security_manager.dart';
+import 'package:stageup/skeleton/widgets/decoration.dart';
+import 'package:stageup/skeleton/widgets/loading.dart';
+import 'package:stageup/skeleton/widgets/primary_button.dart';
+import 'package:stageup/skeleton/widgets/toast.dart';
+
+import '../../../applications/ui/manager/application_manager.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -17,13 +21,12 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Consumer<SecurityManager>(
-        builder: (context, securityManager, child) {
+    return Consumer<SecurityManager>(builder: (context, security, child) {
       return Scaffold(
         backgroundColor: AppTheme.white,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: securityManager.loading
+          child: security.loading
               ? const Loading()
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +40,7 @@ class LoginPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: AppTheme.primary),
                     )),
-                    Center(
+                    const Center(
                         child: Text(
                       "connectez-vous á votre compte",
                       style: TextStyle(
@@ -47,37 +50,49 @@ class LoginPage extends StatelessWidget {
                     )),
                     const Gap(40),
                     TextFormField(
-                      onChanged: (phone) => securityManager.setPhone(phone),
+                      onChanged: (phone) => security.setLoginPhone(phone),
                       keyboardType: TextInputType.phone,
                       style: const TextStyle(
-                          color: AppTheme.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600),
+                        color: AppTheme.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                      ),
                       decoration: AppWidgetDecoration.inputDecoration(
                         hint: '70 00 00 00',
                         borderColor: AppTheme.gray,
                         borderWidth: 2,
                         icon: Icons.phone,
-                        label: 'Téléphone',
+                        label: 'Numéro de Téléphone',
                       ),
                     ),
                     const Gap(15),
                     TextFormField(
-                        onChanged: (password) =>
-                            securityManager.setPassword(password),
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
-                        style: const TextStyle(
-                            color: AppTheme.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                        decoration: AppWidgetDecoration.inputDecoration(
-                          hint: '********',
-                          borderColor: AppTheme.gray,
-                          borderWidth: 2,
-                          icon: Icons.lock,
-                          label: 'Password',
-                        )),
+                      onChanged: (password) =>
+                          security.setLoginPassword(password),
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: security.obscure,
+                      style: const TextStyle(
+                        color: AppTheme.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      decoration: AppWidgetDecoration.inputDecoration(
+                        hint: '********',
+                        borderColor: AppTheme.gray,
+                        borderWidth: 2,
+                        icon: Icons.lock,
+                        label: 'Mot de passe',
+                        suffixIcon: InkWell(
+                          onTap: () => security.obscureText(),
+                          child: Icon(
+                            security.obscure
+                                ? Icons.visibility_rounded
+                                : Icons.visibility_off_rounded,
+                            color: AppTheme.gray,
+                          ),
+                        ),
+                      ),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -98,21 +113,45 @@ class LoginPage extends StatelessWidget {
                     const Gap(30),
                     Center(
                       child: PrimaryButton(
-                        color: (securityManager.phoneIsValid &&
-                                securityManager.passwordIsValid)
+                        color: (security.phoneIsValid &&
+                                security.paramsLogin.password.isNotEmpty)
                             ? AppTheme.primary
                             : AppTheme.gray,
-                        onPressed: () {
-                          if (securityManager.phoneIsValid &&
-                              securityManager.passwordIsValid) {
-                            securityManager.login();
-                            GoRouter.of(context)
-                                .pushReplacementNamed(AppRoutes.rootRoute);
+                        onPressed: () async {
+                          if (security.phoneIsValid &&
+                              security.paramsLogin.password.isNotEmpty) {
+                            security.load();
+                            await security.login().whenComplete(
+                              () async {
+                                if (security.response!.success) {
+                                  await Provider.of<InternshipManager>(context,
+                                          listen: false)
+                                      .fetchInternships()
+                                      .whenComplete(() {
+                                    Provider.of<ApplicationManager>(context,
+                                            listen: false)
+                                        .fetchApplications()
+                                        .whenComplete(() {
+                                      security.unLoad();
+                                      GoRouter.of(context).pushReplacementNamed(
+                                          AppRoutes.rootRoute);
+                                    });
+                                  });
+                                }
+                                security.unLoad();
+                                toast(
+                                  context: context,
+                                  title: "Authentification",
+                                  message: security.response!.message,
+                                  success: security.response!.success,
+                                );
+                              },
+                            );
                           }
                         },
                         vPadding: 15,
                         hPadding: size.width * 0.25,
-                        child: Text(
+                        child: const Text(
                           "Se Connecter",
                           style: TextStyle(
                             color: AppTheme.white,
