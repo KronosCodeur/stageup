@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:stage_up/res/assets_res.dart';
+import 'package:stageup/res/assets_res.dart';
 
 class Loading extends StatelessWidget {
   const Loading({super.key, this.size});
