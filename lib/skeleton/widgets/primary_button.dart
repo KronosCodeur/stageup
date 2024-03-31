@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stage_up/config/theme/theme.dart';
+import 'package:stageup/config/theme/theme.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
