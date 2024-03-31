@@ -1,6 +1,6 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
-import 'package:stage_up/config/theme/theme.dart';
+import 'package:stageup/config/theme/theme.dart';
 
 void toast(
     {required BuildContext context,
