@@ -1,13 +1,14 @@
 const List<String> months = [
-  'jan',
-  'fev',
-  'mars',
-  'avr',
-  'mai',
-  'juin',
-  'juil',
-  'aout',
-  'sep',
-  'nov',
-  'dec'
+  'Janvier',
+  'Fevrier',
+  'Mars',
+  'Avril',
+  'Mai',
+  'Juin',
+  'Juillet',
+  'Aout',
+  'Septembre',
+  'Octobre',
+  'Novembre',
+  'Decembre'
 ];
