@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:stage_up/config/routing/app_routes.dart';
-import 'package:stage_up/config/theme/theme.dart';
-import 'package:stage_up/skeleton/managers/on_boarding_manager.dart';
-import 'package:stage_up/skeleton/widgets/onboarding_widget.dart';
-import 'package:stage_up/skeleton/widgets/primary_button.dart';
+import 'package:stageup/config/routing/app_routes.dart';
+import 'package:stageup/config/theme/theme.dart';
+import 'package:stageup/skeleton/managers/on_boarding_manager.dart';
+import 'package:stageup/skeleton/widgets/onboarding_widget.dart';
+import 'package:stageup/skeleton/widgets/primary_button.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({super.key});
